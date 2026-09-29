@@ -3,543 +3,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FITLINKS — Luxury Athletic Club & Attendance System</title>
-  <meta name="description" content="FITLINKS Luxury Fitness Club Attendance & Cafe Management System — Faisalabad">
+  <title>FITLINKS — Commercial Proposal & Attendance System Quotation</title>
+  <meta name="description" content="Commercial Proposal and Technical Scope of Work for FITLINKS Gym Attendance, Turnstile Integration & Cafe POS System — Faisalabad">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="proposal.css">
 </head>
 <body>
-  <!-- Ambient background glow layers -->
-  <div class="ambient-glow glow-top-left"></div>
-  <div class="ambient-glow glow-bottom-right"></div>
-  <div class="noise-overlay"></div>
+  <!-- Ambient Gold Glows -->
+  <div class="ambient-glow glow-top"></div>
+  <div class="ambient-glow glow-bottom"></div>
 
-  <div class="app-layout">
-    <!-- FLOATING CAPSULE / PILL SIDEBAR DOCK (User's Exact Reference) -->
-    <aside class="pill-dock-container">
-      <div class="pill-dock" id="floatingPillDock">
-        <!-- Floating brand mark at top of pill -->
-        <div class="dock-brand" title="FITLINKS">
-          <span class="brand-monogram">FL</span>
-        </div>
-
-        <div class="dock-divider"></div>
-
-        <!-- Nav Items -->
-        <nav class="dock-nav">
-          <button class="dock-item active" data-tab="dashboard" id="nav-dashboard" title="Dashboard">
-            <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-            <span class="dock-tooltip">Dashboard</span>
-          </button>
-
-          <button class="dock-item" data-tab="attendance" id="nav-attendance" title="Live Attendance & Kiosk">
-            <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"></path>
-              <path d="M6 19c0-2.21 2.69-4 6-4s6 1.79 6 4"></path>
-              <rect x="2" y="2" width="20" height="20" rx="5" stroke-dasharray="4 2"></rect>
-            </svg>
-            <span class="dock-tooltip">Biometric Attendance</span>
-          </button>
-
-          <button class="dock-item" data-tab="members" id="nav-members" title="Membership Management">
-            <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="5" width="20" height="14" rx="3"></rect>
-              <line x1="2" y1="10" x2="22" y2="10"></line>
-              <circle cx="7" cy="15" r="1.5"></circle>
-            </svg>
-            <span class="dock-tooltip">Memberships</span>
-          </button>
-
-          <button class="dock-item" data-tab="cafe" id="nav-cafe" title="Protein & Cafe Bar POS">
-            <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-              <line x1="6" y1="1" x2="6" y2="4"></line>
-              <line x1="10" y1="1" x2="10" y2="4"></line>
-              <line x1="14" y1="1" x2="14" y2="4"></line>
-            </svg>
-            <span class="dock-tooltip">Protein & Cafe Bar</span>
-          </button>
-
-          <button class="dock-item" data-tab="analytics" id="nav-analytics" title="Analytics & Reports">
-            <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="18" y1="20" x2="18" y2="10"></line>
-              <line x1="12" y1="20" x2="12" y2="4"></line>
-              <line x1="6" y1="20" x2="6" y2="14"></line>
-            </svg>
-            <span class="dock-tooltip">Club Analytics</span>
-          </button>
-        </nav>
-
-        <div class="dock-divider"></div>
-
-        <!-- Bottom dock utility items -->
-        <div class="dock-bottom">
-          <button class="dock-item" id="btn-sound-toggle" title="Luxury UI Sound (On)">
-            <svg class="dock-icon" id="soundIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-            </svg>
-            <span class="dock-tooltip">Sound Effects</span>
-          </button>
-
-          <button class="dock-item" id="nav-settings" data-tab="settings" title="Gate & Device Settings">
-            <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="3"></circle>
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
-            <span class="dock-tooltip">Settings</span>
-          </button>
+  <div class="proposal-container">
+    <!-- Top Action Nav -->
+    <header class="proposal-topbar">
+      <div class="brand-monogram-box">
+        <span class="brand-monogram">FL</span>
+        <div>
+          <span class="brand-name">FIT<span class="gold-text">LINKS</span></span>
+          <span class="brand-subtitle">FITNESS. CONNECTED. TRANSFORMED.</span>
         </div>
       </div>
-    </aside>
 
-    <!-- MAIN STAGE / CONTENT AREA -->
-    <main class="main-content">
-      <!-- Top Luxury Header -->
-      <header class="top-nav-bar">
-        <div class="brand-header">
-          <div class="brand-title-wrap">
-            <h1 class="brand-title">FIT<span class="gold-gradient-text">LINKS</span></h1>
-            <span class="brand-tagline">FITNESS. CONNECTED. TRANSFORMED. • FAISALABAD</span>
+      <div class="topbar-actions">
+        <a href="demo.html" class="btn-demo-link" target="_blank">
+          <span class="pulse-dot"></span>
+          <span>Open Interactive Live Demo</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </a>
+        <button class="btn-print" onclick="window.print()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          <span>Print / Save PDF</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Document Header -->
+    <section class="doc-header">
+      <div class="doc-badge">OFFICIAL TECHNICAL PROPOSAL & COMMERCIAL QUOTATION</div>
+      <h1 class="doc-title">Automated Turnstile Attendance & Cafe Management System</h1>
+      <p class="doc-meta-line">
+        <span><strong>Client:</strong> FITLINKS Athletic Club, Faisalabad</span>
+        <span class="meta-separator">•</span>
+        <span><strong>Terminal:</strong> ZKTeco uFace800 Plus & Turnstiles</span>
+        <span class="meta-separator">•</span>
+        <span><strong>Document Version:</strong> 1.0 (Final)</span>
+      </p>
+    </section>
+
+    <!-- Executive Summary (Strictly Point-to-Point) -->
+    <section class="point-box summary-box">
+      <h2 class="section-heading">Project Objective</h2>
+      <p class="summary-text">
+        FITLINKS Gym ke liye ek complete automated system tayyar kiya ja raha hai jo aapki maujooda <strong>ZKTeco uFace800 Plus</strong> biometric machine aur turnstile gate ke sath directly link hoga. Iske tehat sirf active members ko gate se entry milegi, new members ke free trial duration ko client khud control kar sakega, aur gym ke <strong>Protein & Cafe Bar</strong> ke liye alag se staff login provide kiya jayega taake daily sales aur member tabs asani se manage hon.
+      </p>
+    </section>
+
+    <!-- Point to Point Deliverables -->
+    <section class="deliverables-section">
+      <h2 class="section-heading">Scope of Work & Deliverables (Point-to-Point)</h2>
+      
+      <div class="points-list">
+        <!-- Point 1 -->
+        <div class="point-card">
+          <div class="point-index">01</div>
+          <div class="point-body">
+            <div class="point-header-row">
+              <h3 class="point-title">Biometric Attendance & Turnstile Gate Sync (ZKTeco uFace800 Plus)</h3>
+              <span class="point-price">PKR 20,000</span>
+            </div>
+            <ul class="point-bullets">
+              <li>Gym ki existing <strong>ZKTeco uFace800 Plus</strong> machine ke sath local network (TCP/IP) ke zariye direct integration.</li>
+              <li>Member face ya fingerprint lagaye ga toh system &lt; 0.3 second mein membership status verify karega.</li>
+              <li><strong>Active Membership:</strong> System turnstile relay ko unlock signal bhejega aur gate open ho jayega.</li>
+              <li><strong>Expired / Unpaid:</strong> Gate bilkul <strong>LOCKED</strong> rahega, turnstile rotate nahi hoga, aur receptionist screen par alert aayega.</li>
+            </ul>
           </div>
         </div>
 
-        <div class="header-center-info">
-          <div class="status-indicator">
-            <span class="pulse-dot"></span>
-            <span class="status-label">TURNSTILE GATE 01 ONLINE</span>
+        <!-- Point 2 -->
+        <div class="point-card">
+          <div class="point-index">02</div>
+          <div class="point-body">
+            <div class="point-header-row">
+              <h3 class="point-title">Membership Management & Configurable Free Trial Engine</h3>
+              <span class="point-price">PKR 15,000</span>
+            </div>
+            <ul class="point-bullets">
+              <li><strong>Free Trial Control:</strong> Client/Admin khud control kar sakega ke new members ko kitne din ka free trial dena hai (e.g., 1 din, 3 din, ya 7 din).</li>
+              <li>Free trial period khatam hote hi system automatically member ka gate access block kar dega jab tak regular package activate na ho.</li>
+              <li>Morning vs Evening time-slot restrictions (e.g., Morning slot wale evening mein enter nahi ho sakein ge).</li>
+              <li>Member profile record with photo, phone number, emergency contact, aur package expiry date.</li>
+            </ul>
           </div>
         </div>
 
-        <div class="header-right-actions">
-          <div class="time-widget" id="liveClockWidget">
-            <span class="clock-time">09:15:32 AM</span>
-            <span class="clock-date">Tuesday, Faisalabad Club</span>
-          </div>
-          
-          <button class="btn-quick-scan" id="btnTriggerScan" title="Simulate Face / Card Scan">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-              <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
-              <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
-              <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
-              <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
-              <circle cx="12" cy="12" r="3"></circle>
-            </svg>
-            <span>Simulate Check-In</span>
-          </button>
-
-          <div class="admin-profile-pill">
-            <div class="admin-avatar">H</div>
-            <div class="admin-meta">
-              <span class="admin-name">Hamza Malik</span>
-              <span class="admin-role">Club Manager</span>
+        <!-- Point 3 -->
+        <div class="point-card">
+          <div class="point-index">03</div>
+          <div class="point-body">
+            <div class="point-header-row">
+              <h3 class="point-title">Dedicated Protein Bar & Cafe POS (Separate Staff Login)</h3>
+              <span class="point-price">PKR 15,000</span>
             </div>
+            <ul class="point-bullets">
+              <li><strong>Separate Login Portal:</strong> Barista / Cafe staff ke liye alag login screen — gym ke main financial aur member confidential data tak cafe staff ki access nahi hogi.</li>
+              <li>Rapid Touch POS menu: Protein shakes (Whey Isolate, Mass Gainer), pre-workout shots, smoothies, aur supplements.</li>
+              <li><strong>Member Tab Auto-Debit:</strong> Member ke name par direct bill charge karna ya instant Cash / Card checkout.</li>
+              <li>Daily Cafe sales reports aur drink inventory tracking.</li>
+            </ul>
           </div>
         </div>
-      </header>
 
-      <!-- TAB 1: OVERVIEW DASHBOARD -->
-      <section class="tab-pane active" id="pane-dashboard">
-        <div class="dashboard-grid">
-          <!-- Column 1: Interactive 3D Member Access Card -->
-          <div class="grid-col-card">
-            <div class="card-header-subtle">
-              <span class="subtle-tag">LIVE BIOMETRIC ACCESS</span>
-              <span class="stream-badge"><span class="mini-pulse"></span> CAMERA STREAM</span>
+        <!-- Point 4 -->
+        <div class="point-card">
+          <div class="point-index">04</div>
+          <div class="point-body">
+            <div class="point-header-row">
+              <h3 class="point-title">Central Admin Dashboard & Live Attendance Reporting</h3>
+              <span class="point-price">PKR 10,000</span>
             </div>
-
-            <!-- 3D Tilt Member Card Container -->
-            <div class="card-3d-wrapper" id="card3dWrapper">
-              <div class="card-3d-inner" id="card3dInner">
-                <div class="card-3d-shine"></div>
-                <div class="card-content">
-                  <div class="card-top-row">
-                    <div class="card-chip">
-                      <span class="chip-metal"></span>
-                      <span class="chip-label">FITLINKS RFID</span>
-                    </div>
-                    <div class="card-verification-status status-verified" id="badgeCardStatus">
-                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 12l2 2 4-4"></path>
-                        <circle cx="12" cy="12" r="10"></circle>
-                      </svg>
-                      <span>ACCESS GRANTED</span>
-                    </div>
-                  </div>
-
-                  <div class="member-profile-showcase">
-                    <div class="avatar-ring-3d">
-                      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Member Photo" id="cardMemberAvatar" class="avatar-img">
-                      <div class="face-scan-hud">
-                        <div class="hud-corner hud-tl"></div>
-                        <div class="hud-corner hud-tr"></div>
-                        <div class="hud-corner hud-bl"></div>
-                        <div class="hud-corner hud-br"></div>
-                        <div class="hud-scan-beam"></div>
-                      </div>
-                    </div>
-
-                    <h2 class="member-name" id="cardMemberName">Sarah Jenkins</h2>
-                    <div class="member-id-tag" id="cardMemberId">FL-MEMBER #0842</div>
-                    <div class="tier-pill-gold" id="cardMemberTier">VIP PLATINUM CLUB</div>
-                  </div>
-
-                  <div class="card-meta-grid">
-                    <div class="card-meta-item">
-                      <span class="meta-label">Check-In Time</span>
-                      <span class="meta-value" id="cardCheckInTime">09:14 AM (Just Now)</span>
-                    </div>
-                    <div class="card-meta-item">
-                      <span class="meta-label">Membership Validity</span>
-                      <span class="meta-value highlight-gold" id="cardDaysRemaining">184 Days Left</span>
-                    </div>
-                    <div class="card-meta-item">
-                      <span class="meta-label">Allowed Slot</span>
-                      <span class="meta-value" id="cardSlot">All-Day Unrestricted</span>
-                    </div>
-                    <div class="card-meta-item">
-                      <span class="meta-label">Bar Tab Balance</span>
-                      <span class="meta-value highlight-green" id="cardCafeBalance">PKR 4,850</span>
-                    </div>
-                  </div>
-
-                  <div class="card-footer-action">
-                    <button class="btn-action-outline" onclick="openMemberModal()">View Full Member Dossier</button>
-                    <button class="btn-action-gold" onclick="switchTab('cafe')">Charge Protein Bar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <p class="card-hint">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-              Hover over card for 3D gyro tilt effect
-            </p>
-          </div>
-
-          <!-- Column 2: Live Gym Metrics & Hourly Trends -->
-          <div class="grid-col-center">
-            <!-- Capacity Widget -->
-            <div class="metric-glass-card">
-              <div class="card-title-row">
-                <span class="section-title">CURRENT GYM OCCUPANCY</span>
-                <span class="badge-status-live">OPTIMAL CAPACITY</span>
-              </div>
-              <div class="capacity-gauge-wrap">
-                <div class="gauge-ring-container">
-                  <svg class="progress-ring" width="160" height="160">
-                    <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.06)" stroke-width="12" cx="80" cy="80" r="66"/>
-                    <circle class="progress-ring__circle" id="capacityRing" stroke="url(#goldGradient)" stroke-width="12" stroke-dasharray="414.69" stroke-dashoffset="108" stroke-linecap="round" cx="80" cy="80" r="66"/>
-                    <defs>
-                      <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#F5D061"/>
-                        <stop offset="60%" stop-color="#D4AF37"/>
-                        <stop offset="100%" stop-color="#9B781E"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <div class="gauge-text-center">
-                    <span class="gauge-percentage" id="capacityPercent">74%</span>
-                    <span class="gauge-sub">372 / 500</span>
-                  </div>
-                </div>
-                <div class="gauge-details">
-                  <div class="detail-stat">
-                    <span class="stat-number highlight-gold">268</span>
-                    <span class="stat-desc">Male Floor (Zone A)</span>
-                  </div>
-                  <div class="detail-stat">
-                    <span class="stat-number highlight-gold">104</span>
-                    <span class="stat-desc">Female Studio & Spa</span>
-                  </div>
-                  <div class="detail-stat">
-                    <span class="stat-number">14</span>
-                    <span class="stat-desc">Personal Trainers Active</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Live Hourly Traffic Chart -->
-            <div class="metric-glass-card">
-              <div class="card-title-row">
-                <span class="section-title">TODAY'S HOURLY TRAFFIC</span>
-                <span class="subtle-time-tag">Peak: 06:00 PM - 09:30 PM</span>
-              </div>
-              <div class="traffic-chart-visual">
-                <div class="chart-bars">
-                  <div class="bar-col" style="--height: 35%"><span class="bar-val">42</span><span class="bar-lbl">06 AM</span></div>
-                  <div class="bar-col" style="--height: 55%"><span class="bar-val">78</span><span class="bar-lbl">08 AM</span></div>
-                  <div class="bar-col" style="--height: 40%"><span class="bar-val">52</span><span class="bar-lbl">10 AM</span></div>
-                  <div class="bar-col" style="--height: 30%"><span class="bar-val">38</span><span class="bar-lbl">12 PM</span></div>
-                  <div class="bar-col" style="--height: 48%"><span class="bar-val">64</span><span class="bar-lbl">02 PM</span></div>
-                  <div class="bar-col" style="--height: 68%"><span class="bar-val">95</span><span class="bar-lbl">04 PM</span></div>
-                  <div class="bar-col active-peak" style="--height: 92%"><span class="bar-val">142</span><span class="bar-lbl">06 PM</span></div>
-                  <div class="bar-col" style="--height: 85%"><span class="bar-val">120</span><span class="bar-lbl">08 PM</span></div>
-                  <div class="bar-col" style="--height: 45%"><span class="bar-val">60</span><span class="bar-lbl">10 PM</span></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Recent Live Ticker Feed -->
-            <div class="metric-glass-card">
-              <div class="card-title-row">
-                <span class="section-title">REAL-TIME ATTENDANCE STREAM</span>
-                <span class="live-dot-pulse">● LIVE</span>
-              </div>
-              <div class="attendance-stream-list" id="recentCheckinStream">
-                <!-- Injected via JS -->
-              </div>
-            </div>
-          </div>
-
-          <!-- Column 3: Protein & Cafe Bar POS Quick Tab -->
-          <div class="grid-col-right">
-            <div class="metric-glass-card cafe-quick-card">
-              <div class="card-title-row">
-                <div>
-                  <span class="section-title">FITLINKS PROTEIN BAR</span>
-                  <div class="bar-subtitle">Active Member Tab: <strong id="cafeActiveMemberName">Sarah Jenkins</strong></div>
-                </div>
-                <div class="cart-pill-badge" id="cartPillBadge">0 Items</div>
-              </div>
-
-              <!-- Quick Order Menu Grid -->
-              <div class="cafe-pos-items-grid" id="cafeQuickItems">
-                <!-- Injected via JS -->
-              </div>
-
-              <!-- Quick Checkout Summary -->
-              <div class="cafe-quick-checkout">
-                <div class="checkout-row">
-                  <span>Selected Total:</span>
-                  <span class="checkout-amount" id="cafeQuickTotal">PKR 0</span>
-                </div>
-                <div class="checkout-buttons">
-                  <button class="btn-charge-tab" id="btnChargeTab" onclick="chargeActiveMemberTab()">
-                    <span>Charge to Member Tab</span>
-                  </button>
-                  <button class="btn-cash-pay" onclick="chargeCash()">Cash</button>
-                </div>
-              </div>
-            </div>
+            <ul class="point-bullets">
+              <li>Real-time gym floor occupancy gauge (e.g., iss waqt gym mein kitne log workout kar rahe hain).</li>
+              <li>Hourly peak rush hours analysis (morning vs evening peak timing graph).</li>
+              <li>Daily consolidated revenue report: Membership collection + Cafe/Bar sales.</li>
+              <li>Exportable attendance log aur membership renewal due list.</li>
+            </ul>
           </div>
         </div>
-      </section>
 
-      <!-- TAB 2: LIVE ATTENDANCE / KIOSK FULL SCREEN -->
-      <section class="tab-pane" id="pane-attendance">
-        <div class="kiosk-full-container">
-          <div class="kiosk-hero-card">
-            <div class="kiosk-header">
-              <div class="brand-monogram-circle">FL</div>
-              <div class="kiosk-title-area">
-                <h2>FITLINKS BIOMETRIC GATE TERMINAL</h2>
-                <p>Facial Recognition & RFID Reader • Turnstile #1</p>
-              </div>
-              <div class="kiosk-mode-tag">KIOSK MODE ACTIVE</div>
+        <!-- Point 5 -->
+        <div class="point-card warranty-card">
+          <div class="point-index highlight-gold">05</div>
+          <div class="point-body">
+            <div class="point-header-row">
+              <h3 class="point-title">Deployment, Staff Training & 15-Day Free Support / Minor Changes Warranty</h3>
+              <span class="point-price highlight-free">INCLUDED FREE</span>
             </div>
-
-            <div class="kiosk-scanner-center">
-              <div class="scanner-3d-halo" id="scannerHalo">
-                <div class="halo-particle-ring ring-1"></div>
-                <div class="halo-particle-ring ring-2"></div>
-                <div class="scanner-face-frame">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Scanned Member" id="kioskAvatar">
-                  <div class="scan-laser-line"></div>
-                </div>
-              </div>
-
-              <div class="kiosk-verification-result" id="kioskResult">
-                <div class="kiosk-badge-status" id="kioskStatusPill">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-                  <span id="kioskStatusText">ACCESS GRANTED</span>
-                </div>
-                <h1 class="kiosk-welcome-name" id="kioskWelcomeName">Welcome, Hamza Tariq!</h1>
-                <div class="kiosk-tier-meta" id="kioskTierMeta">VIP Gold Tier • 214 Days Remaining</div>
-                <div class="kiosk-perk-pill" id="kioskPerk">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
-                  <span>Cafe Perk: 1 Free Post-Workout Isolate Shake available today</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="kiosk-action-row">
-              <button class="btn-kiosk-test" onclick="simulateNextMember()">Scan Next Member</button>
-              <button class="btn-kiosk-expired" onclick="simulateExpiredMember()">Simulate Expired Membership</button>
-              <button class="btn-kiosk-slot" onclick="simulateWrongSlotMember()">Simulate Slot Overstay</button>
-            </div>
+            <ul class="point-bullets">
+              <li>FITLINKS Faisalabad gym branch par on-site local network setup aur turnstile testing.</li>
+              <li>Receptionist aur Cafe staff ki comprehensive usage training.</li>
+              <li><strong>15-Day Complete Warranty:</strong> System live hone ke baad <strong>15 din ke andar</strong> agar koi bhi technical masla aata hai ya koi choti-moti changes/adjustments karwani hon, toh woh bina kisi extra charges ke completely free solve ki jayengi.</li>
+            </ul>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- TAB 3: MEMBERSHIP MANAGEMENT -->
-      <section class="tab-pane" id="pane-members">
-        <div class="members-management-wrapper">
-          <div class="members-header-row">
-            <div>
-              <h2 class="pane-title">Club Membership Registry</h2>
-              <p class="pane-subtitle">Manage member tiers, biometric enrollment, active plans, and billing tabs.</p>
-            </div>
-            <div class="members-actions">
-              <div class="search-input-wrap">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <input type="text" id="memberSearchInput" placeholder="Search by name, ID or phone..." onkeyup="filterMembers()">
-              </div>
-              <button class="btn-gold-add" onclick="showNewMemberModal()">+ Enroll New Member</button>
-            </div>
-          </div>
+    <!-- Commercial Quotation Summary Table -->
+    <section class="quotation-summary-section">
+      <h2 class="section-heading">Commercial Quotation Summary</h2>
 
-          <!-- Members Data Table -->
-          <div class="table-glass-container">
-            <table class="luxury-table">
-              <thead>
-                <tr>
-                  <th>Member</th>
-                  <th>ID & Contact</th>
-                  <th>Membership Tier</th>
-                  <th>Time Slot</th>
-                  <th>Expiration Date</th>
-                  <th>Status</th>
-                  <th>Bar Tab</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody id="membersTableBody">
-                <!-- Injected via JS -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+      <div class="table-card">
+        <table class="quotation-table">
+          <thead>
+            <tr>
+              <th>Module / Item</th>
+              <th>Key Deliverables</th>
+              <th class="text-right">Price (PKR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Biometric & Turnstile Sync</strong></td>
+              <td>ZKTeco uFace800 Plus Relay Integration, Face & Finger Auto-Gate Unlock</td>
+              <td class="text-right">PKR 20,000</td>
+            </tr>
+            <tr>
+              <td><strong>2. Membership & Free Trial Control</strong></td>
+              <td>Client-Controlled Trial Duration (1-7 Days), Auto-Block on Expiry</td>
+              <td class="text-right">PKR 15,000</td>
+            </tr>
+            <tr>
+              <td><strong>3. Dedicated Cafe & Bar POS</strong></td>
+              <td>Separate Barista Login, Touch Ordering, Member Tab Billing</td>
+              <td class="text-right">PKR 15,000</td>
+            </tr>
+            <tr>
+              <td><strong>4. Central Admin Dashboard</strong></td>
+              <td>Live Floor Occupancy Gauge, Hourly Rush Charts, Financial Audit</td>
+              <td class="text-right">PKR 10,000</td>
+            </tr>
+            <tr class="warranty-row">
+              <td><strong>5. Deployment & 15-Day Warranty</strong></td>
+              <td>On-site Setup, Staff Training, 15 Days Free Technical Support & Minor Changes</td>
+              <td class="text-right highlight-gold">FREE (Included)</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="total-row">
+              <td colspan="2">
+                <span class="total-label">TOTAL ALL-INCLUSIVE PACKAGE:</span>
+                <span class="total-sub">Turnkey solution covering all hardware & software requirements</span>
+              </td>
+              <td class="text-right total-amount">PKR 60,000</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
 
-      <!-- TAB 4: PROTEIN & CAFE BAR POS FULL SYSTEM -->
-      <section class="tab-pane" id="pane-cafe">
-        <div class="cafe-pos-full-layout">
-          <!-- Left: Menu Categories & Grid -->
-          <div class="cafe-menu-section">
-            <div class="cafe-header-row">
-              <div>
-                <h2 class="pane-title">FITLINKS Protein Bar & Healthy Cafe</h2>
-                <p class="pane-subtitle">High-protein shakes, pre-workouts, smoothies, and meal prep.</p>
-              </div>
-              <div class="category-pills" id="categoryPills">
-                <button class="cat-pill active" onclick="filterCafeCategory('all')">All Items</button>
-                <button class="cat-pill" onclick="filterCafeCategory('shakes')">Protein Shakes</button>
-                <button class="cat-pill" onclick="filterCafeCategory('pre')">Pre-Workout</button>
-                <button class="cat-pill" onclick="filterCafeCategory('smoothies')">Smoothies</button>
-                <button class="cat-pill" onclick="filterCafeCategory('supplements')">Supplements</button>
-              </div>
-            </div>
+    <!-- Project Timeline & Commercial Terms -->
+    <div class="terms-grid">
+      <div class="term-box">
+        <h3 class="term-title">Delivery Timeline</h3>
+        <p class="term-desc"><strong>5 to 7 Working Days</strong> from project kickoff to on-site turnstile testing and deployment.</p>
+      </div>
 
-            <div class="pos-full-grid" id="posFullGrid">
-              <!-- Injected via JS -->
-            </div>
-          </div>
+      <div class="term-box">
+        <h3 class="term-title">Payment Milestones</h3>
+        <p class="term-desc"><strong>50% Advance (PKR 30,000)</strong> at project commencement.<br><strong>50% Final (PKR 30,000)</strong> upon on-site turnstile testing and go-live.</p>
+      </div>
 
-          <!-- Right: POS Order Ticket / Cart -->
-          <div class="cafe-pos-cart-panel">
-            <div class="cart-panel-header">
-              <span class="cart-title">CURRENT TICKET</span>
-              <span class="ticket-no">#POS-4089</span>
-            </div>
+      <div class="term-box">
+        <h3 class="term-title">Hardware Requirement</h3>
+        <p class="term-desc">ZKTeco uFace800 Plus & Turnstile Gate (already installed at gym floor) connected to local router/switch via LAN cable.</p>
+      </div>
+    </div>
 
-            <!-- Member Assignment -->
-            <div class="member-tab-selector">
-              <label for="selectCartMember">Charge to Member:</label>
-              <select id="selectCartMember" onchange="updateCartMemberTab(this.value)">
-                <!-- Injected via JS -->
-              </select>
-            </div>
+    <!-- Final Approval CTA Footer -->
+    <footer class="proposal-footer">
+      <div class="footer-left">
+        <span class="footer-sign">Prepared by: <strong>Engineering & Development Team</strong></span>
+        <span class="footer-date">Proposal Date: September 2026 • Valid for 15 Days</span>
+      </div>
 
-            <!-- Cart Line Items -->
-            <div class="cart-items-scroll" id="cartItemsList">
-              <div class="empty-cart-msg">No items in ticket. Click any item to add.</div>
-            </div>
-
-            <!-- Ticket Totals -->
-            <div class="cart-totals-area">
-              <div class="total-row">
-                <span>Subtotal:</span>
-                <span id="cartSubtotal">PKR 0</span>
-              </div>
-              <div class="total-row">
-                <span>Club Tax (0%):</span>
-                <span>PKR 0</span>
-              </div>
-              <div class="total-row total-highlight">
-                <span>Grand Total:</span>
-                <span class="gold-gradient-text" id="cartGrandTotal">PKR 0</span>
-              </div>
-
-              <div class="cart-actions-grid">
-                <button class="btn-cart-charge" onclick="processPOSOrder('tab')">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                  <span>Deduct from Member Tab</span>
-                </button>
-                <button class="btn-cart-cash" onclick="processPOSOrder('cash')">
-                  <span>Pay Cash / Card</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TAB 5: CLUB ANALYTICS & FINANCIALS -->
-      <section class="tab-pane" id="pane-analytics">
-        <div class="analytics-layout">
-          <div class="members-header-row">
-            <div>
-              <h2 class="pane-title">Club Performance & Revenue Metrics</h2>
-              <p class="pane-subtitle">Faisalabad Club Branch • Executive Summary</p>
-            </div>
-            <div class="time-range-pills">
-              <button class="range-pill active">Today</button>
-              <button class="range-pill">This Week</button>
-              <button class="range-pill">This Month</button>
-            </div>
-          </div>
-
-          <div class="analytics-kpi-grid">
-            <div class="kpi-card">
-              <span class="kpi-label">Today's Total Check-Ins</span>
-              <span class="kpi-value highlight-gold">438</span>
-              <span class="kpi-sub-positive">↑ 14% vs yesterday</span>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-label">Active Members</span>
-              <span class="kpi-value">712</span>
-              <span class="kpi-sub">Total enrolled: 780</span>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-label">Cafe & Bar Daily Sales</span>
-              <span class="kpi-value highlight-gold">PKR 86,400</span>
-              <span class="kpi-sub-positive">↑ 18% weekly growth</span>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-label">Expiring in 7 Days</span>
-              <span class="kpi-value highlight-red">23 Members</span>
-              <span class="kpi-sub">Auto-renewal reminders sent</span>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+      <div class="footer-right">
+        <a href="demo.html" class="btn-footer-demo">Launch Interactive Demo</a>
+        <button class="btn-footer-accept" onclick="alert('Proposal approved! Please proceed with advance milestone.')">Accept & Approve Proposal</button>
+      </div>
+    </footer>
   </div>
-
-  <!-- Notification Toast -->
-  <div class="luxury-toast" id="luxuryToast">
-    <div class="toast-icon" id="toastIcon">✓</div>
-    <div class="toast-text" id="toastText">Notification message</div>
-  </div>
-
-  <script src="app.js"></script>
 </body>
 </html>
